@@ -1,14 +1,32 @@
 import React from 'react';
+import ZingTouch from 'zingtouch';
 
 class Wheel extends React.Component{
     constructor(){
         super();
     }
 
-    render = () => {
+    rotateWheel = () => {
+        var currentAngle = 15;
+
+        //region.bind(target, 'rotate', function(e) {
+        // var rotatable = document.getElementById('rotatable');
+        // currentAngle += e.detail.distanceFromLast;
+        // rotatable.style.transform = 'rotate(' + currentAngle + 'deg)';
+        var containerElement = document.getElementById('wheel-container');
+        var activeRegion = ZingTouch.Region(containerElement);
+        var childElement = document.getElementById('inner-container');
+        activeRegion.bind(childElement, 'rotate', function(event){
+        //Perform Operations
+        console.log("rotate");
+        
+        });
+    }
+
+    render(){
         return(
-            <div style = {styles.wheelContainer} className='wheel-container'>
-                <div style = {styles.wheel}>
+            <div style = {styles.wheelContainer} id='wheel-container'>
+                <div id='inner-container' style = {styles.wheel} onMouseOver={this.rotateWheel}>
                     <div style = {styles.buttonContainer}>
                         <div style = {styles.menuButton}>
                             <img style = {styles.image} src="https://image.flaticon.com/icons/svg/3039/3039357.svg" />

@@ -10,6 +10,7 @@ class Ipod extends React.Component{
         return(
             <div style = {styles.ipodContainer}>
                 <Wheel />
+                
             </div>
         );
     }
