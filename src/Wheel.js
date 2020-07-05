@@ -1,7 +1,9 @@
 import React from 'react';
 import ZingTouch from 'zingtouch';
 
+
 class Wheel extends React.Component{
+
     constructor(){
         super();
     }
@@ -49,20 +51,21 @@ class Wheel extends React.Component{
             </div>
         );
     }
+    
 }
+
 
 const styles = {
     wheelContainer : {
-        height : '13rem',
-        width : 'inherit',
+        height : '15rem',
+        width : '100%',
         backgroundColor : 'lightgrey',
-        alignSelf : 'flex-end'
     },
     wheel : {
-        width : '15rem',
-        height : 'inherit',
+        width : '80%',
+        height : '90%',
         backgroundColor : 'white',
-        margin : 'auto',
+        margin : '1rem auto',
         borderRadius : '50%',
         display : 'flex',
         flexDirection : 'row',
