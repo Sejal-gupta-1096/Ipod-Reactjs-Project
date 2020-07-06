@@ -19,7 +19,7 @@ class Screen extends React.Component{
 
 const styles = {
     screen : {
-        height : '15rem',
+        height : '16rem',
         width : '100%',
         backgroundColor : 'white',
         border : '2px solid lightgrey'
