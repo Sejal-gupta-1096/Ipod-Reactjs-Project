@@ -10,7 +10,7 @@ class Screen extends React.Component{
     render(){
         return(
             <div style={styles.screen} id='screen-container'>
-                <Home />
+                <Home activeItem={this.props.activeItem}/>
             </div>
         );
     }
