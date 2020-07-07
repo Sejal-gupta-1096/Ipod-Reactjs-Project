@@ -8,14 +8,15 @@ class Ipod extends React.Component{
         super();
         this.state = {
             activeItem : 'Wallpapers',
-            activePage : 'Home'
+            activePage : 'Home',
         }
     }
 
     rotateWheel = () => {
+
         var currentAngle = 15;
         var containerElement = document.getElementById('wheel-container');
-        var activeRegion = ZingTouch.Region(containerElement);
+        var activeRegion = new ZingTouch.Region(containerElement);
         var childElement = document.getElementById('inner-container');
         var change = 0;
         var self = this;
@@ -24,7 +25,7 @@ class Ipod extends React.Component{
         //Perform Operations
         
         var newAngle = event.detail.distanceFromLast;
-        console.log(currentAngle , newAngle);
+        console.log(newAngle);
 
         if(newAngle < 0){
             console.log(change);
@@ -84,11 +85,12 @@ class Ipod extends React.Component{
             activeItem : this.state.activeItem,
             activePage : this.state.activeItem
         })
+        
     }
 
     changePageToHomeScreen = () => {
         this.setState({
-            activeItem : 'Wallpapers',
+            activeItem : this.state.activeItem,
             activePage : 'Home'
         })
     }
