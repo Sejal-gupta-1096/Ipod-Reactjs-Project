@@ -33,22 +33,34 @@ class Ipod extends React.Component{
             if(change === 15){
                 console.log("change state");
                 change = 0;
-                if(self.state.activeItem === 'Wallpapers'){
-                    self.setState({
-                        activeItem : "Music"
-                    })
-                }else if(self.state.activeItem === 'Music'){
-                    self.setState({
-                        activeItem : "Games"
-                    })
-                }else if(self.state.activeItem === 'Games'){
-                    self.setState({
-                        activeItem : "Settings"
-                    })
-                }else if(self.state.activeItem === 'Settings'){
-                    self.setState({
-                        activeItem : "Wallpapers"
-                    })
+                if(self.state.activePage === 'Home'){
+                    if(self.state.activeItem === 'Wallpapers'){
+                        self.setState({
+                            activeItem : "Music"
+                        })
+                    }else if(self.state.activeItem === 'Music'){
+                        self.setState({
+                            activeItem : "Games"
+                        })
+                    }else if(self.state.activeItem === 'Games'){
+                        self.setState({
+                            activeItem : "Settings"
+                        })
+                    }else if(self.state.activeItem === 'Settings'){
+                        self.setState({
+                            activeItem : "Wallpapers"
+                        })
+                    }
+                }else if(self.state.activePage === 'Music'){
+                    if(self.state.activeItem === 'MyMusic'){
+                        self.setState({
+                            activeItem : "Artists"
+                        })
+                    }else if(self.state.activeItem === 'Artists'){
+                        self.setState({
+                            activeItem : "MyMusic"
+                        })
+                    }
                 }
             }
         }else{
@@ -57,22 +69,34 @@ class Ipod extends React.Component{
             if(change === 15){
                 console.log("change state");
                 change = 0;
-                if(self.state.activeItem === 'Wallpapers'){
-                    self.setState({
-                        activeItem : "Settings"
-                    })
-                }else if(self.state.activeItem === 'Music'){
-                    self.setState({
-                        activeItem : "Wallpapers"
-                    })
-                }else if(self.state.activeItem === 'Games'){
-                    self.setState({
-                        activeItem : "Music"
-                    })
-                }else if(self.state.activeItem === 'Settings'){
-                    self.setState({
-                        activeItem : "Games"
-                    })
+                if(self.state.activePage == 'Home'){
+                    if(self.state.activeItem === 'Wallpapers'){
+                        self.setState({
+                            activeItem : "Settings"
+                        })
+                    }else if(self.state.activeItem === 'Music'){
+                        self.setState({
+                            activeItem : "Wallpapers"
+                        })
+                    }else if(self.state.activeItem === 'Games'){
+                        self.setState({
+                            activeItem : "Music"
+                        })
+                    }else if(self.state.activeItem === 'Settings'){
+                        self.setState({
+                            activeItem : "Games"
+                        })
+                    }
+                }else if(self.state.activePage == 'Music'){
+                    if(self.state.activeItem === 'MyMusic'){
+                        self.setState({
+                            activeItem : "Artists"
+                        })
+                    }else if(self.state.activeItem === 'Artists'){
+                        self.setState({
+                            activeItem : "MyMusic"
+                        })
+                    }
                 }
             }
         }
@@ -81,18 +105,34 @@ class Ipod extends React.Component{
 
     changePage = () => {
 
-        this.setState({
-            activeItem : this.state.activeItem,
-            activePage : this.state.activeItem
-        })
+        if(this.state.activeItem === 'Music'){
+            this.setState({
+                activeItem : 'MyMusic',
+                activePage : this.state.activeItem
+            })
+        }else{
+            this.setState({
+                activeItem : this.state.activeItem,
+                activePage : this.state.activeItem
+            })
+        }
+        
         
     }
 
     changePageToHomeScreen = () => {
-        this.setState({
-            activeItem : this.state.activeItem,
-            activePage : 'Home'
-        })
+        if(this.state.activePage === 'Music'){
+            this.setState({
+                activeItem : 'Music',
+                activePage : 'Home'
+            })
+        }else{
+            this.setState({
+                activeItem : this.state.activeItem,
+                activePage : 'Home'
+            })
+        }
+        
     }
 
     render(){

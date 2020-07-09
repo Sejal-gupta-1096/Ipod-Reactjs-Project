@@ -8,7 +8,6 @@ class Home extends React.Component{
     }
 
     render(){
-        let self = this;
         return(
             <div style={styles.homeScreen} id='home-screen'>
                 <div style={styles.menuList} id='menu-list'>
