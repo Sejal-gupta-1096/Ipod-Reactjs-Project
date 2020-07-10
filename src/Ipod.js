@@ -9,6 +9,7 @@ class Ipod extends React.Component{
         this.state = {
             activeItem : 'Wallpapers',
             activePage : 'Home',
+            enter : 0
         }
     }
 
@@ -20,87 +21,93 @@ class Ipod extends React.Component{
         var childElement = document.getElementById('inner-container');
         var change = 0;
         var self = this;
-
-        activeRegion.bind(childElement, 'rotate', function(event){
-        //Perform Operations
+        self.state.enter = self.state.enter + 1;
         
-        var newAngle = event.detail.distanceFromLast;
-        console.log(newAngle);
-
-        if(newAngle < 0){
-            console.log(change);
-            change++;
-            if(change === 15){
-                console.log("change state");
-                change = 0;
-                if(self.state.activePage === 'Home'){
-                    if(self.state.activeItem === 'Wallpapers'){
-                        self.setState({
-                            activeItem : "Music"
-                        })
-                    }else if(self.state.activeItem === 'Music'){
-                        self.setState({
-                            activeItem : "Games"
-                        })
-                    }else if(self.state.activeItem === 'Games'){
-                        self.setState({
-                            activeItem : "Settings"
-                        })
-                    }else if(self.state.activeItem === 'Settings'){
-                        self.setState({
-                            activeItem : "Wallpapers"
-                        })
+        if(self.state.enter < 2){
+            activeRegion.bind(childElement, 'rotate', function(event){
+                //Perform Operations
+                
+                var newAngle = event.detail.distanceFromLast;
+                console.log(newAngle);
+        
+                if(newAngle < 0){
+                    console.log(change);
+                    change++;
+                    if(change === 15){
+                        console.log("change state");
+                        change = 0;
+                        if(self.state.activePage === 'Home'){
+                            if(self.state.activeItem === 'Wallpapers'){
+                                self.setState({
+                                    activeItem : "Music"
+                                })
+                            }else if(self.state.activeItem === 'Music'){
+                                self.setState({
+                                    activeItem : "Games"
+                                })
+                            }else if(self.state.activeItem === 'Games'){
+                                self.setState({
+                                    activeItem : "Settings"
+                                })
+                            }else if(self.state.activeItem === 'Settings'){
+                                self.setState({
+                                    activeItem : "Wallpapers"
+                                })
+                            }
+                        }else if(self.state.activePage === 'Music'){
+                            if(self.state.activeItem === 'MyMusic'){
+                                self.setState({
+                                    activeItem : "Artists"
+                                })
+                            }else if(self.state.activeItem === 'Artists'){
+                                self.setState({
+                                    activeItem : "MyMusic"
+                                })
+                            }
+                        }
                     }
-                }else if(self.state.activePage === 'Music'){
-                    if(self.state.activeItem === 'MyMusic'){
-                        self.setState({
-                            activeItem : "Artists"
-                        })
-                    }else if(self.state.activeItem === 'Artists'){
-                        self.setState({
-                            activeItem : "MyMusic"
-                        })
+                }else{
+                    console.log(change);
+                    change++;
+                    if(change === 15){
+                        console.log("change state");
+                        change = 0;
+                        if(self.state.activePage == 'Home'){
+                            if(self.state.activeItem === 'Wallpapers'){
+                                self.setState({
+                                    activeItem : "Settings"
+                                })
+                            }else if(self.state.activeItem === 'Music'){
+                                self.setState({
+                                    activeItem : "Wallpapers"
+                                })
+                            }else if(self.state.activeItem === 'Games'){
+                                self.setState({
+                                    activeItem : "Music"
+                                })
+                            }else if(self.state.activeItem === 'Settings'){
+                                self.setState({
+                                    activeItem : "Games"
+                                })
+                            }
+                        }else if(self.state.activePage == 'Music'){
+                            if(self.state.activeItem === 'MyMusic'){
+                                self.setState({
+                                    activeItem : "Artists"
+                                })
+                            }else if(self.state.activeItem === 'Artists'){
+                                self.setState({
+                                    activeItem : "MyMusic"
+                                })
+                            }
+                        }
                     }
                 }
-            }
+                });
         }else{
-            console.log(change);
-            change++;
-            if(change === 15){
-                console.log("change state");
-                change = 0;
-                if(self.state.activePage == 'Home'){
-                    if(self.state.activeItem === 'Wallpapers'){
-                        self.setState({
-                            activeItem : "Settings"
-                        })
-                    }else if(self.state.activeItem === 'Music'){
-                        self.setState({
-                            activeItem : "Wallpapers"
-                        })
-                    }else if(self.state.activeItem === 'Games'){
-                        self.setState({
-                            activeItem : "Music"
-                        })
-                    }else if(self.state.activeItem === 'Settings'){
-                        self.setState({
-                            activeItem : "Games"
-                        })
-                    }
-                }else if(self.state.activePage == 'Music'){
-                    if(self.state.activeItem === 'MyMusic'){
-                        self.setState({
-                            activeItem : "Artists"
-                        })
-                    }else if(self.state.activeItem === 'Artists'){
-                        self.setState({
-                            activeItem : "MyMusic"
-                        })
-                    }
-                }
-            }
+            console.log("Not allowed to enter")
         }
-        });
+        
     }
 
     changePage = () => {
@@ -121,14 +128,14 @@ class Ipod extends React.Component{
     }
 
     changePageToHomeScreen = () => {
-        if(this.state.activePage === 'Music'){
+        if(this.state.activePage === 'Music' || this.state.activePage === 'Wallpapers' || this.state.activePage === 'Settings' || this.state.activePage === 'Games'){
             this.setState({
-                activeItem : 'Music',
+                activeItem : this.state.activeItem,
                 activePage : 'Home'
             })
         }else{
             this.setState({
-                activeItem : this.state.activeItem,
+                activeItem : 'Music',
                 activePage : 'Home'
             })
         }
