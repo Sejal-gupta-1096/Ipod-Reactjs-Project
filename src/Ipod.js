@@ -128,14 +128,15 @@ class Ipod extends React.Component{
     }
 
     changePageToHomeScreen = () => {
-        if(this.state.activePage === 'Music' || this.state.activePage === 'Wallpapers' || this.state.activePage === 'Settings' || this.state.activePage === 'Games'){
+
+        if(this.state.activeItem === 'MyMusic' || this.state.activeItem === 'Artists'){
             this.setState({
-                activeItem : this.state.activeItem,
+                activeItem : 'Music',
                 activePage : 'Home'
             })
         }else{
             this.setState({
-                activeItem : 'Music',
+                activeItem : this.state.activeItem,
                 activePage : 'Home'
             })
         }
@@ -149,7 +150,7 @@ class Ipod extends React.Component{
                 <Screen activeItem={this.state.activeItem} activePage={this.state.activePage} />
 
                 <div style = {styles.wheelContainer} id='wheel-container'>
-                <div id='inner-container' style = {styles.wheel} onClick={this.rotateWheel}>
+                <div id='inner-container' style = {styles.wheel} onMouseOver={this.rotateWheel}>
                     <div style = {styles.buttonContainer}>
                         <div style = {styles.menuButton}>
                             <img onClick={this.changePageToHomeScreen} style = {styles.image} src="https://image.flaticon.com/icons/svg/3039/3039357.svg" />
@@ -178,19 +179,20 @@ class Ipod extends React.Component{
 
 const styles = {
     ipodContainer : {
-        height : '30rem',
+        height : '33rem',
         width : '20rem',
-        backgroundColor : 'black',
+        backgroundColor : 'lightgray',
         margin : 'auto',
         display : 'flex',
         flexDirection : 'row',
         flexWrap : 'wrap',
-        justifyContent : 'center'
+        justifyContent : 'center',
+        borderRadius : '24px'
         
     },
     wheelContainer : {
-        height : '14rem',
-        width : '100%',
+        height : '45%',
+        width : '90%',
         backgroundColor : 'lightgrey',
     },
     wheel : {
