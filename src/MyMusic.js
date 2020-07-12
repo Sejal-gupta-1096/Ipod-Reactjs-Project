@@ -6,7 +6,6 @@ class MyMusic extends React.Component{
     constructor(){
         super();
         this.state = {
-            audio : null,
             isMounted : true
         }
     }
@@ -14,14 +13,12 @@ class MyMusic extends React.Component{
    
     componentDidMount(){
         let self = this;
-        const audioEl = document.getElementsByClassName("audio-element")[0];
-        self.audio = audioEl;
-        self.audio.play();
+        self.props.audio.play();
 
        
-            self.audio.addEventListener("timeupdate",function(){
+            self.props.audio.addEventListener("timeupdate",function(){
                 if(self.state.isMounted){
-                    var pos = audioEl.currentTime/audioEl.duration;
+                    var pos = self.props.audio.currentTime/self.props.audio.duration;
                     self.updateTime();
                     let fill = document.getElementById("fill");
                     console.log(fill);
@@ -37,7 +34,7 @@ class MyMusic extends React.Component{
     updateTime = () =>{
        
         this.setState({
-            audio : this.audio
+            audio : this.props.audio
         })
     }
 
@@ -46,7 +43,7 @@ class MyMusic extends React.Component{
     }
 
     render(){
-        let audio = this.state.audio;
+         let audio = this.props.audio;
         return(
             <div style={styles.myMusicContainer}>
 
@@ -61,9 +58,6 @@ class MyMusic extends React.Component{
                 </div>
 
                 <div style={styles.statusBar}>
-                    <audio className="audio-element">
-                        <source src={sound}></source>
-                    </audio>
                     <p style={styles.currTime}>{audio !== null ? Math.floor(audio.currentTime) : '0 / 0'}</p>
                     <div style={styles.seekBar}>
                         <div style={styles.fill} id='fill'></div>
