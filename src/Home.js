@@ -13,8 +13,8 @@ class Home extends React.Component{
                 <div style={styles.menuList} id='menu-list'>
                     <h2 style={{marginLeft:'12px'}}>IPod.js</h2>
                     <ListGroup>
-                        <ListGroup.Item style={{border:'0'}} className={this.props.activeItem==='Wallpapers'?'active':''}>
-                            Wallpapers {this.props.activeItem==='Wallpapers'?<span style={{float:'right' ,fontWeight:'bold'}}>&gt;</span>:''}
+                        <ListGroup.Item style={{border:'0'}} className={this.props.activeItem==='NowPlaying'?'active':''}>
+                            Now Playing {this.props.activeItem==='NowPlaying'?<span style={{float:'right' ,fontWeight:'bold'}}>&gt;</span>:''}
                         </ListGroup.Item>
                         <ListGroup.Item style={{border:'0'}} className={this.props.activeItem==='Music'?'active':''}>
                             Music {this.props.activeItem==='Music'?<span style={{float:'right' ,fontWeight:'bold'}}>&gt;</span>:''}

@@ -9,7 +9,7 @@ class Ipod extends React.Component{
     constructor(){
         super();
         this.state = {
-            activeItem : 'Wallpapers',
+            activeItem : 'NowPlaying',
             activePage : 'Home',
             enter : 0,
             play : true
@@ -40,7 +40,7 @@ class Ipod extends React.Component{
                         console.log("change state");
                         change = 0;
                         if(self.state.activePage === 'Home'){
-                            if(self.state.activeItem === 'Wallpapers'){
+                            if(self.state.activeItem === 'NowPlaying'){
                                 self.setState({
                                     activeItem : "Music"
                                 })
@@ -54,7 +54,7 @@ class Ipod extends React.Component{
                                 })
                             }else if(self.state.activeItem === 'Settings'){
                                 self.setState({
-                                    activeItem : "Wallpapers"
+                                    activeItem : "NowPlaying"
                                 })
                             }
                         }else if(self.state.activePage === 'Music'){
@@ -76,13 +76,13 @@ class Ipod extends React.Component{
                         console.log("change state");
                         change = 0;
                         if(self.state.activePage == 'Home'){
-                            if(self.state.activeItem === 'Wallpapers'){
+                            if(self.state.activeItem === 'NowPlaying'){
                                 self.setState({
                                     activeItem : "Settings"
                                 })
                             }else if(self.state.activeItem === 'Music'){
                                 self.setState({
-                                    activeItem : "Wallpapers"
+                                    activeItem : "NowPlaying"
                                 })
                             }else if(self.state.activeItem === 'Games'){
                                 self.setState({
@@ -119,6 +119,11 @@ class Ipod extends React.Component{
             this.setState({
                 activeItem : 'MyMusic',
                 activePage : this.state.activeItem
+            })
+        }else if(this.state.activeItem === 'NowPlaying'){
+            this.setState({
+                activeItem : 'NowPlaying',
+                activePage : 'MyMusic'
             })
         }else{
             this.setState({
