@@ -3,11 +3,6 @@ import artistImage from './assets/images/sejal.jpeg';
 
 class Artists extends React.Component{
     
-    constructor(){
-        super();
-    }
-
-   
     render(){
         return(
             <div style={styles.artistsContainer}>
@@ -16,7 +11,7 @@ class Artists extends React.Component{
                         <p style={{fontWeight:'bold'}}>iPod</p>
                         <img style={styles.battery} src="https://image.flaticon.com/icons/svg/3103/3103446.svg"></img>
                     </div>
-                    
+
                 <div style={styles.info}>
                     <div style={styles.imageContainer}>
                     </div>

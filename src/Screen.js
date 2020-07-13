@@ -7,10 +7,6 @@ import MyMusic from './MyMusic';
 import Artists from './Artists';
 
 class Screen extends React.Component{
-    
-    constructor(){
-        super();
-    }
 
     render(){
         return(

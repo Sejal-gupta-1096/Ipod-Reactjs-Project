@@ -18,7 +18,6 @@ class Ipod extends React.Component{
 
     rotateWheel = () => {
 
-        var currentAngle = 15;
         var containerElement = document.getElementById('inner-container');
         var activeRegion = new ZingTouch.Region(containerElement);
         // var childElement = document.getElementById('inner-container');
@@ -75,7 +74,7 @@ class Ipod extends React.Component{
                     if(change === 15){
                         console.log("change state");
                         change = 0;
-                        if(self.state.activePage == 'Home'){
+                        if(self.state.activePage === 'Home'){
                             if(self.state.activeItem === 'NowPlaying'){
                                 self.setState({
                                     activeItem : "Settings"
@@ -93,7 +92,7 @@ class Ipod extends React.Component{
                                     activeItem : "Games"
                                 })
                             }
-                        }else if(self.state.activePage == 'Music'){
+                        }else if(self.state.activePage === 'Music'){
                             if(self.state.activeItem === 'MyMusic'){
                                 self.setState({
                                     activeItem : "Artists"
@@ -153,7 +152,7 @@ class Ipod extends React.Component{
 
     toggle = () =>{
         if(this.state.activePage === 'MyMusic'){
-            if(this.state.play == true){
+            if(this.state.play === true){
                 this.state.audio.pause();
                 this.setState({
                     play : false
@@ -178,7 +177,6 @@ class Ipod extends React.Component{
     }
 
     render(){
-        let play = this.state.play
         return(
             <div style = {styles.ipodContainer}>
 
@@ -191,14 +189,14 @@ class Ipod extends React.Component{
                 <div id='inner-container' style = {styles.wheel} onMouseOver={this.rotateWheel}>
                     <div style = {styles.buttonContainer}>
                         <div style = {styles.menuButton}>
-                            <i onClick={this.changePageToHomeScreen} style = {styles.image} class="fas fa-bars"></i>
+                            <i onClick={this.changePageToHomeScreen} style = {styles.image} className="fas fa-bars"></i>
                         </div>
                         
                     </div>
                     <div style = {styles.buttonContainer}>
                         <div style = {styles.middleButtons}>
                             
-                            <i style = {styles.image} class="fas fa-fast-backward"></i>
+                            <i style = {styles.image} className="fas fa-fast-backward"></i>
                             <div onClick={this.changePage} style={{backgroundImage: 'linear-gradient(45deg, #8c8181, transparent)' , width : '5rem' , height : '5rem' , borderRadius : '50%'}}></div>
                             <i style = {styles.image} className="fas fa-fast-forward"></i>
                             
@@ -206,7 +204,7 @@ class Ipod extends React.Component{
                     </div>
                     <div style = {styles.buttonContainer}>
                         <div onClick={this.toggle} style = {styles.playButton}>
-                            { play ?<i onClick={this.toggle} style = {styles.image} class="fas fa-play"></i>:<i onClick={this.toggle} style = {styles.image} class="fas fa-pause"></i>}
+                            <i onClick={this.toggle} style = {styles.image} className="fas fa-play"></i>&nbsp;<i onClick={this.toggle} style = {styles.image} className="fas fa-pause"></i>
                         </div>
                     </div>
                 </div>

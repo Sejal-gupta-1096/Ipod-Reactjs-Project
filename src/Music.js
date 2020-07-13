@@ -2,10 +2,6 @@ import React from 'react';
 import { ListGroup } from 'react-bootstrap';
 
 class Music extends React.Component{
-    
-    constructor(){
-        super();
-    }
 
     render(){
         return(

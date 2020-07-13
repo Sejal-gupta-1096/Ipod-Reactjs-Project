@@ -2,10 +2,6 @@ import React from 'react';
 
 class Settings extends React.Component{
     
-    constructor(){
-        super();
-    }
-
     render(){
         return(
             <div style={styles.settings} >
