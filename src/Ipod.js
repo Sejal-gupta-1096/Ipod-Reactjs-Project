@@ -19,15 +19,15 @@ class Ipod extends React.Component{
     rotateWheel = () => {
 
         var currentAngle = 15;
-        var containerElement = document.getElementById('wheel-container');
+        var containerElement = document.getElementById('inner-container');
         var activeRegion = new ZingTouch.Region(containerElement);
-        var childElement = document.getElementById('inner-container');
+        // var childElement = document.getElementById('inner-container');
         var change = 0;
         var self = this;
         self.state.enter = self.state.enter + 1;
         
         if(self.state.enter < 2){
-            activeRegion.bind(childElement, 'rotate', function(event){
+            activeRegion.bind(containerElement, 'rotate', function(event){
                 //Perform Operations
                 
                 var newAngle = event.detail.distanceFromLast;
@@ -164,6 +164,7 @@ class Ipod extends React.Component{
                     play : true
                 })
             }
+            console.log("toggled")
         }
     }
 
@@ -177,6 +178,7 @@ class Ipod extends React.Component{
     }
 
     render(){
+        let play = this.state.play
         return(
             <div style = {styles.ipodContainer}>
 
@@ -186,28 +188,28 @@ class Ipod extends React.Component{
                     
                 <Screen activeItem={this.state.activeItem} activePage={this.state.activePage} audio={this.state.audio} />
 
-                <div style = {styles.wheelContainer} id='wheel-container'>
                 <div id='inner-container' style = {styles.wheel} onMouseOver={this.rotateWheel}>
                     <div style = {styles.buttonContainer}>
                         <div style = {styles.menuButton}>
-                            <img onClick={this.changePageToHomeScreen} style = {styles.image} src="https://image.flaticon.com/icons/svg/3039/3039357.svg" />
+                            <i onClick={this.changePageToHomeScreen} style = {styles.image} class="fas fa-bars"></i>
                         </div>
                         
                     </div>
                     <div style = {styles.buttonContainer}>
                         <div style = {styles.middleButtons}>
-                            <img style = {styles.image} src="https://image.flaticon.com/icons/svg/2404/2404393.svg" />
-                            <div onClick={this.changePage} style={{backgroundColor : 'lightgrey' , width : '5rem' , height : '5rem' , borderRadius : '50%'}}></div>
-                            <img style = {styles.image} src="https://image.flaticon.com/icons/svg/2404/2404395.svg" />
+                            
+                            <i style = {styles.image} class="fas fa-fast-backward"></i>
+                            <div onClick={this.changePage} style={{backgroundImage: 'linear-gradient(45deg, #8c8181, transparent)' , width : '5rem' , height : '5rem' , borderRadius : '50%'}}></div>
+                            <i style = {styles.image} className="fas fa-fast-forward"></i>
+                            
                         </div>
                     </div>
                     <div style = {styles.buttonContainer}>
                         <div onClick={this.toggle} style = {styles.playButton}>
-                            <img style = {styles.image} src="https://image.flaticon.com/icons/svg/2404/2404317.svg" />
+                            { play ?<i onClick={this.toggle} style = {styles.image} class="fas fa-play"></i>:<i onClick={this.toggle} style = {styles.image} class="fas fa-pause"></i>}
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         );
     }
@@ -218,7 +220,7 @@ const styles = {
     ipodContainer : {
         height : '33rem',
         width : '20rem',
-        backgroundColor : 'lightgray',
+        backgroundImage: 'radial-gradient(#adb1b5, #4d4f50)',
         margin : 'auto',
         display : 'flex',
         flexDirection : 'row',
@@ -227,16 +229,11 @@ const styles = {
         borderRadius : '24px'
         
     },
-    wheelContainer : {
-        height : '45%',
-        width : '90%',
-        backgroundColor : 'lightgrey',
-    },
     wheel : {
-        width : '80%',
-        height : '90%',
-        backgroundColor : 'white',
+        width : '75%',
+        height : '40%',
         margin : '1rem auto',
+        backgroundColor : '#4b4e52',
         borderRadius : '50%',
         display : 'flex',
         flexDirection : 'row',
@@ -265,8 +262,8 @@ const styles = {
     },
     image: {
         alignSelf : 'center',
-        width : '2rem',
-        height : '2rem',
+        fontSize: '1.5rem',
+        color : 'white'
     },
 }
 
