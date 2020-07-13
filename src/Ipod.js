@@ -221,7 +221,7 @@ const styles = {
         height : '33rem',
         width : '20rem',
         backgroundImage: 'radial-gradient(#adb1b5, #4d4f50)',
-        margin : 'auto',
+        margin : '4rem auto',
         display : 'flex',
         flexDirection : 'row',
         flexWrap : 'wrap',
